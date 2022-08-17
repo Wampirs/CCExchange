@@ -1,4 +1,5 @@
 ﻿using CCExchange.Services;
+using CCExchange.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -23,6 +24,7 @@ namespace CCExchange
 
 
         internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+            .AddViewModels()
             .AddServices()
         ;
 
