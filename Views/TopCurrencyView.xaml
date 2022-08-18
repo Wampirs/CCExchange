@@ -7,6 +7,31 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <DataGrid ItemsSource="{Binding Curs}"
+                  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}"/>
+                <DataGridTemplateColumn Header="Name">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                        <Binding Path="Name"/>
+                                        <Binding Path="Symbol"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd}"/>
+                <DataGridTextColumn Header="Market Cap" Binding="{Binding MarketCapUsd}"/>
+                <DataGridTextColumn Header="VWAP(24Hr)" Binding="{Binding Vwap24Hr}"/>
+                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}"/>
+                <DataGridTextColumn Header="Volume" Binding="{Binding VolumeUsd24Hr}"/>
+                <DataGridTextColumn Header="Change(24Hr)" Binding="{Binding ChangePercent24Hr}"/>
+            </DataGrid.Columns>
+        </DataGrid>        
     </Grid>
 </UserControl>
