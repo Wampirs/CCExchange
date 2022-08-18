@@ -2,11 +2,7 @@
 using CCExchange.Services;
 using CCExchange.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CCExchange.ViewModels
 {
@@ -25,7 +21,11 @@ namespace CCExchange.ViewModels
         public Currency SelectedCurrency
         {
             get => selectedCurrency;
-            set => Set(ref selectedCurrency, value);
+            set
+            {
+                Set(ref selectedCurrency, value);
+                RefreshSelectedCurrency(selectedCurrency);
+            }
         }
 
 
@@ -35,6 +35,11 @@ namespace CCExchange.ViewModels
             CurrencyInfoVM = new CurrencyInfoVM();
             Currencies = api.GetCurrenciesAsync().Result;
             SelectedCurrency = Currencies[0];
+        }
+
+        private void RefreshSelectedCurrency(Currency curr)
+        {
+            Set(ref curr, api.GetCurrencyAsync(curr.Id).Result);
         }
     }
 }
