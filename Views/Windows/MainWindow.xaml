@@ -8,6 +8,12 @@
         Title="MainWindow" Height="450" Width="800"
         DataContext="{Binding Path= MainWindowVM ,Source={StaticResource Locator}}">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button></Button>
+        </StackPanel>
     </Grid>
 </Window>
