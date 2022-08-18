@@ -24,9 +24,10 @@ namespace CCExchange.Services
         }
 
 
-        public async Task<List<Currency>> GetCurrenciesAsync()
+        public async Task<List<Currency>> GetCurrenciesAsync(int count = -1)
         {
             string requestUri = new string("v2/assets");
+            if (count > 0) requestUri = requestUri + $"?limit={count}";
             HttpResponseMessage response = await api.GetAsync(requestUri).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             var res = await response.Content.ReadAsStringAsync();

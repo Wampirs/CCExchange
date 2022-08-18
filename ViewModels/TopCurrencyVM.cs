@@ -1,4 +1,5 @@
-﻿using CCExchange.Models;
+﻿using CCExchange.Commands;
+using CCExchange.Models;
 using CCExchange.Services;
 using CCExchange.ViewModels.Base;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CCExchange.ViewModels
 {
@@ -24,7 +26,15 @@ namespace CCExchange.ViewModels
         public TopCurrencyVM()
         {
             api = App.Services.GetRequiredService<IApiService>();
-            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync().Result.GetRange(0,10));
+            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);
         }
+
+        private ICommand refreshCommand;
+        public ICommand RefreshCommand => refreshCommand ??= new RelayCommand(OnRefreshExecuted,CanRefreshExecute);
+        private void OnRefreshExecuted(object o)
+        {
+            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);     
+        }
+        private bool CanRefreshExecute(object o) => true;
     }
 }
