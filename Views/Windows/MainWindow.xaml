@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         DataContext="{Binding Path= MainWindowVM ,Source={StaticResource Locator}}">
-    <Grid>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button></Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Margin="5" Content="   Top 10   " Command="{Binding ShowTopCommand}"/>
+            <Button Margin="5" Content=" Details " Command="{Binding ShowDetailCommand}"/>
         </StackPanel>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentVm}"/>
     </Grid>
 </Window>
