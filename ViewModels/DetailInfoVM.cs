@@ -27,8 +27,13 @@ namespace CCExchange.ViewModels
             get => selectedCurrency;
             set
             {
-                RefreshSelectedCurrency(ref value);
                 Set(ref selectedCurrency, value);
+                if (value == null)
+                {
+                    InfoVM = null;
+                    return;
+                }
+                InfoVM = new CurrencyInfoVM(value);
             }
         }
         private string searchCriteria = string.Empty;
@@ -40,6 +45,13 @@ namespace CCExchange.ViewModels
                 Set(ref searchCriteria, value);
                 if (FilterChanged != null) FilterChanged();
             }
+        }
+        private CurrencyInfoVM infoVM;
+
+        public CurrencyInfoVM InfoVM
+        {
+            get { return infoVM; }
+            set { Set(ref infoVM, value); }
         }
 
 

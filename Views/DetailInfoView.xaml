@@ -33,6 +33,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </DockPanel>
-        <local:CurrencyInfo Grid.Column="1" DataContext="{Binding SelectedCurrency}" Margin="5"/>
+        <ContentControl Content="{Binding InfoVM}"
+                        Margin="5" Grid.Column="1"/>
     </Grid>
 </UserControl>

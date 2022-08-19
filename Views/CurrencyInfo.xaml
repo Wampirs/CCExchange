@@ -8,9 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DockPanel>
-            <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
-            <TextBlock Text="{Binding Symbol}" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Center" DockPanel.Dock="Top"/>
-            <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
+            <StackPanel Orientation="Vertical" DockPanel.Dock="Top" DataContext="{Binding Currency}">
+                <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding Symbol}" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Center"/>
                 <TextBlock FontSize="16" >
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}Price: {0}$   {1}% at last 24Hr">
@@ -31,6 +31,31 @@
                     </TextBlock.Text>
                 </TextBlock>
             </StackPanel>
+            <TextBlock Text="Markets:" FontSize="16" DockPanel.Dock="Top"/>
+            <DataGrid ItemsSource="{Binding Markets}" 
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column"
+                      ColumnWidth="*" DockPanel.Dock="Top">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Exchange" Binding="{Binding ExchangeId}"/>
+                    <DataGridTemplateColumn Header="Pair">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}/{1}">
+                                            <Binding Path="BaseSymbol"/>
+                                            <Binding Path="QuoteSymbol"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd, StringFormat={}{0}$}"/>
+                    <DataGridTextColumn Header="Volume(24Hr)" Binding="{Binding VolumeUsd24Hr}"/>
+                    <DataGridTextColumn Header="Volume(%)" Binding="{Binding VolumePercent}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </DockPanel>
     </Grid>
 </UserControl>

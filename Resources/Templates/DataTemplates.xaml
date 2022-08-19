@@ -11,4 +11,8 @@
         <view:DetailInfoView DataContext="{Binding}"/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:CurrencyInfoVM}">
+        <view:CurrencyInfo DataContext="{Binding}"/>
+    </DataTemplate>
+
 </ResourceDictionary>

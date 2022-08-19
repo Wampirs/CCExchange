@@ -16,7 +16,7 @@
         </StackPanel>
         
         <DataGrid ItemsSource="{Binding Curs}" Grid.Row="1"
-                  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
+                  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column"
                   ColumnWidth="*">
             <DataGrid.Columns>
                 <!--<DataGridTextColumn Header="Rank" Binding="{Binding Rank}"/>-->

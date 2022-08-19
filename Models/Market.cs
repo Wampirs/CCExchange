@@ -37,6 +37,10 @@ namespace CCExchange.Models
             get => volumeUsd24Hr;
             set
             {
+                if(value == null)
+                {
+                    volumeUsd24Hr = "0";
+                }
                 decimal val;
                 Decimal.TryParse(value, NumberStyles.Currency, new NumberFormatInfo() { NumberDecimalSeparator = "." }, out val);
                 volumeUsd24Hr = ConvertBig(val);
@@ -57,6 +61,18 @@ namespace CCExchange.Models
         }
 
         [JsonProperty("volumePercent")]
-        public string? VolumePercent { get => volumePercent; set => volumePercent = value; }
+        public string? VolumePercent {
+            get => volumePercent;
+            set
+            {
+                if (value == null)
+                {
+                    volumePercent = "0";
+                }
+                decimal val;
+                Decimal.TryParse(value, NumberStyles.Currency, new NumberFormatInfo() { NumberDecimalSeparator = "." }, out val);
+                volumePercent = ConvertBig(val);
+            }
+        }
     }
 }
