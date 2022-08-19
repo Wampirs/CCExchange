@@ -6,4 +6,13 @@
     <DataTemplate DataType="{x:Type vm:TopCurrencyVM}">
         <view:TopCurrencyView DataContext="{Binding}"/>
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:DetailInfoVM}">
+        <view:DetailInfoView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CurrencyInfoVM}">
+        <view:CurrencyInfo DataContext="{Binding}"/>
+    </DataTemplate>
+
 </ResourceDictionary>

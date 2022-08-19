@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CCExchange.Services
 {
@@ -26,12 +27,32 @@ namespace CCExchange.Services
 
         public async Task<List<Currency>> GetCurrenciesAsync(int count = -1)
         {
-            string requestUri = new string("v2/assets");
-            if (count > 0) requestUri = requestUri + $"?limit={count}";
+                string requestUri = new string("v2/assets");
+                if (count > 0) requestUri = requestUri + $"?limit={count}";
+                HttpResponseMessage response = await api.GetAsync(requestUri).ConfigureAwait(false);
+                response.EnsureSuccessStatusCode();
+                var res = await response.Content.ReadAsStringAsync();
+                var rootJson = JsonConvert.DeserializeObject<JsonArray<Currency>>(res);
+                return rootJson.Data;
+        }
+
+        public async Task<Currency> GetCurrencyAsync(string id)
+        {
+            string requestUri = new string($"v2/assets/{id}");
             HttpResponseMessage response = await api.GetAsync(requestUri).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             var res = await response.Content.ReadAsStringAsync();
-            var rootJson = JsonConvert.DeserializeObject<RootJson>(res);
+            var rootJson = JsonConvert.DeserializeObject<JsonObject<Currency>>(res);
+            return rootJson.Data;
+        }
+
+        public async Task<List<Market>> GetMarketsAsync (string curId)
+        {
+            string requestUri = new string($"v2/assets/{curId}/markets");
+            HttpResponseMessage response = await api.GetAsync(requestUri).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            var res = await response.Content.ReadAsStringAsync();
+            var rootJson = JsonConvert.DeserializeObject<JsonArray<Market>>(res);
             return rootJson.Data;
         }
     }

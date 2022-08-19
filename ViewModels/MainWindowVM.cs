@@ -7,8 +7,6 @@ namespace CCExchange.ViewModels
 {
     public class MainWindowVM : ViewModel
     {
-        private TopCurrencyVM topVm;
-        private DetailInfoVM detailVM;
 
         private ViewModel curVm;
         public ViewModel CurrentVm
@@ -19,9 +17,7 @@ namespace CCExchange.ViewModels
 
         public MainWindowVM()
         {
-            topVm = new TopCurrencyVM();
-            detailVM = new DetailInfoVM();
-            CurrentVm = topVm;
+            CurrentVm = new TopCurrencyVM();
         }
 
         #region ShowTopCommand
@@ -29,10 +25,10 @@ namespace CCExchange.ViewModels
         public ICommand ShowTopCommand => showTopCommand ??= new RelayCommand(OnShowTopExecuted, CanShowTopExetute);
         private void OnShowTopExecuted(object o)
         {
-            if (CurrentVm == topVm) return;
-            CurrentVm = topVm;
+            if (CurrentVm.GetType() == typeof(TopCurrencyVM)) return;
+            CurrentVm = new TopCurrencyVM();
         }
-        private bool CanShowTopExetute(object o) => CurrentVm != topVm;
+        private bool CanShowTopExetute(object o) => CurrentVm.GetType() != typeof(TopCurrencyVM);
 
         #endregion
         #region ShowDetailCommand
@@ -40,10 +36,10 @@ namespace CCExchange.ViewModels
         public ICommand ShowDetailCommand => showdetailCommand ??= new RelayCommand(OnShowDetailExecuted, CanShowDetailExetute);
         private void OnShowDetailExecuted(object o)
         {
-            if (CurrentVm == detailVM) return;
-            CurrentVm = detailVM;
+            if (CurrentVm.GetType() == typeof(DetailInfoVM)) return;
+            CurrentVm = new DetailInfoVM();
         }
-        private bool CanShowDetailExetute(object o) => CurrentVm != detailVM;
+        private bool CanShowDetailExetute(object o) => CurrentVm.GetType() != typeof(DetailInfoVM);
 
         #endregion
     }
