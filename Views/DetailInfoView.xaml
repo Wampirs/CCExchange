@@ -11,10 +11,12 @@
             <ColumnDefinition Width="0.35*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Margin="5">
-            <TextBox x:Name="SearchBox" Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" />
-            <ListView Height="auto" ItemsSource="{Binding FilteredCurrencies}" SelectedItem="{Binding SelectedCurrency}">
-                <ListView.ItemTemplate>
+
+        <DockPanel Grid.Column="0" Margin="5">
+            <TextBox Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top"/>
+            <ListBox ItemsSource="{Binding FilteredCurrencies}" SelectedItem="{Binding SelectedCurrency}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
                         <TextBlock>
@@ -28,9 +30,9 @@
                         <TextBlock Text="{Binding Rank,StringFormat={}Rank {0}}"/>
                         </StackPanel>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackPanel>
-        <local:CurrencyInfo Grid.Column="1" DataContext="{Binding SelectedCurrency}"/>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+        <local:CurrencyInfo Grid.Column="1" DataContext="{Binding SelectedCurrency}" Margin="5"/>
     </Grid>
 </UserControl>

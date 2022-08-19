@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using CCExchange.Models.Base;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 
 namespace CCExchange.Models
 {
-    public class Currency
+    public class Currency : Model
     {
         #region Private fields
         private string? id;
@@ -50,6 +51,11 @@ namespace CCExchange.Models
             get => maxSupply;
             set
             {
+                if (value == null)
+                {
+                    maxSupply = "UNLIM";
+                    return;
+                }
                 decimal val;
                 Decimal.TryParse(value, NumberStyles.Currency, new NumberFormatInfo() { NumberDecimalSeparator = "." }, out val);
                 maxSupply = ConvertBig(val);
@@ -119,26 +125,5 @@ namespace CCExchange.Models
             }
         }
 
-
-        private string ConvertBig(decimal num)
-        {
-            bool isB = false;
-            bool isM = false;
-            if (num > 1000000000)
-            {
-                num = num / 1000000000;
-                isB = true;
-            }
-            else if (num > 1000000)
-            {
-                num = num / 1000000;
-                isM = true;
-            }
-            num = Math.Round(num, 2);
-            string res = num.ToString();
-            if (isB) res = res + "b";
-            if (isM) res = res + "m";
-            return res;
-        }
     }
 }

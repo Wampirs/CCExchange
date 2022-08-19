@@ -45,5 +45,15 @@ namespace CCExchange.Services
             var rootJson = JsonConvert.DeserializeObject<JsonObject<Currency>>(res);
             return rootJson.Data;
         }
+
+        public async Task<List<Market>> GetMarketsAsync (string curId)
+        {
+            string requestUri = new string($"v2/assets/{curId}/markets");
+            HttpResponseMessage response = await api.GetAsync(requestUri).ConfigureAwait(false);
+            response.EnsureSuccessStatusCode();
+            var res = await response.Content.ReadAsStringAsync();
+            var rootJson = JsonConvert.DeserializeObject<JsonArray<Market>>(res);
+            return rootJson.Data;
+        }
     }
 }

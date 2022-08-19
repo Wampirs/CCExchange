@@ -19,7 +19,7 @@
                   CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   ColumnWidth="*">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Rank" Binding="{Binding Rank}"/>
+                <!--<DataGridTextColumn Header="Rank" Binding="{Binding Rank}"/>-->
                 <DataGridTemplateColumn Header="Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

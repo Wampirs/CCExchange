@@ -27,11 +27,10 @@ namespace CCExchange.ViewModels
             get => selectedCurrency;
             set
             {
+                RefreshSelectedCurrency(ref value);
                 Set(ref selectedCurrency, value);
-                RefreshSelectedCurrency(selectedCurrency);
             }
         }
-
         private string searchCriteria = string.Empty;
         public string SearchCriteria
         {
@@ -45,8 +44,6 @@ namespace CCExchange.ViewModels
 
 
 
-
-
         public DetailInfoVM()
         {
             api = App.Services.GetRequiredService<IApiService>();
@@ -55,10 +52,10 @@ namespace CCExchange.ViewModels
             if (FilterChanged != null) FilterChanged();
         }
 
-        private void RefreshSelectedCurrency(Currency curr)
+        private void RefreshSelectedCurrency(ref Currency curr)
         {
             if (curr == null) return;
-            Set(ref curr, api.GetCurrencyAsync(curr.Id).Result);
+            curr = api.GetCurrencyAsync(curr.Id).Result;
         }
 
         private void OnFilterChanged()
