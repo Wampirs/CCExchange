@@ -7,28 +7,30 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.2*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <ComboBox ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}"
-                  Grid.Row="0" Height="25" Width="200" HorizontalAlignment="Left" Margin="10 0 0 0">
-                <ComboBox.ItemTemplate>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.35*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="5">
+            <TextBox x:Name="SearchBox" Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" />
+            <ListView Height="auto" ItemsSource="{Binding FilteredCurrencies}" SelectedItem="{Binding SelectedCurrency}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
+                        <StackPanel Orientation="Vertical">
                         <TextBlock>
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} ({1})">
-                                    <Binding Path="Name" />
-                                    <Binding Path="Symbol" />
+                                    <Binding Path="Name"/>
+                                    <Binding Path="Symbol"/>
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
+                        <TextBlock Text="{Binding Rank,StringFormat={}Rank {0}}"/>
+                        </StackPanel>
                     </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-
-            <local:CurrencyInfo Grid.Row="1" DataContext="{Binding SelectedCurrency}"/>
-        </Grid>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <local:CurrencyInfo Grid.Column="1" DataContext="{Binding SelectedCurrency}"/>
     </Grid>
 </UserControl>
