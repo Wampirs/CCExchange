@@ -28,5 +28,10 @@ namespace CCExchange.Views.Windows
         {
             this.DragMove();
         }
+
+        private void TopBar_CloseButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
