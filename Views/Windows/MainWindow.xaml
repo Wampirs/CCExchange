@@ -4,18 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CCExchange.Views.Windows"
+        xmlns:uc="clr-namespace:CCExchange.Views.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        DataContext="{Binding Path= MainWindowVM ,Source={StaticResource Locator}}">
-    <Grid Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Margin="5" Content="   Top 10   " Command="{Binding ShowTopCommand}"/>
-            <Button Margin="5" Content=" Details " Command="{Binding ShowDetailCommand}"/>
-        </StackPanel>
-        <ContentControl Grid.Row="1" Content="{Binding CurrentVm}"/>
+        Title="MainWindow" Height="600" Width="800"
+        DataContext="{Binding Path= MainWindowVM ,Source={StaticResource Locator}}" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True">
+    <Window.Style>
+        <Style >
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CaptionHeight="0"
+            CornerRadius="2"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="3"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        <uc:TopBar Grid.Row="0" MouseDown="TopBar_MouseDown"/>
+        <Border Grid.Row="1" Margin="5" CornerRadius="5"  BorderThickness="2" BorderBrush="{DynamicResource BorderBrush}" >
+                <StackPanel Orientation="Horizontal" Margin="1" >
+                    <Button Margin="5" Content="   Top 10   " Command="{Binding ShowTopCommand}" Style="{StaticResource MainButton}"/>
+                    <Button Margin="5" Content=" Details " Command="{Binding ShowDetailCommand}" Style="{StaticResource MainButton}"/>
+                </StackPanel>
+            </Border>
+        <Border Grid.Row="2" Margin="5" CornerRadius="5"  BorderThickness="2" BorderBrush="{DynamicResource BorderBrush}" Height="auto" >
+            <ContentControl Margin="5" Content="{Binding CurrentVm}"/>
+        </Border>
     </Grid>
 </Window>

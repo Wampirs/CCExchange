@@ -10,23 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CCExchange.Views.Windows
+namespace CCExchange.Views.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для TopBar.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TopBar : UserControl
     {
-        public MainWindow()
+        public TopBar()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
-        private void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
-        }
+
     }
 }
