@@ -37,13 +37,5 @@ namespace CCExchange.ViewModels
         }
         private bool CanRefreshExecute(object o) => true;
 
-
-        private ICommand changeColor;
-        public ICommand ChangeColor => changeColor ??= new RelayCommand(OnChangeColorExecuted, CanChangeColorExecute);
-        private void OnChangeColorExecuted(object o)
-        {
-            App.Services.GetRequiredService<IThemeService>().ChangeTheme();
-        }
-        private bool CanChangeColorExecute(object o) => true;
     }
 }
