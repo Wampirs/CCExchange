@@ -13,13 +13,13 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
             <Button Margin="5" Height="auto" Width="auto" Command="{Binding RefreshCommand}" Content=" Refresh " />
+            <Button Content="Change theme" Command="{Binding ChangeColor}" Background="{DynamicResource Color}"/>
         </StackPanel>
         
         <DataGrid ItemsSource="{Binding Curs}" Grid.Row="1"
                   CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column"
                   ColumnWidth="*">
             <DataGrid.Columns>
-                <!--<DataGridTextColumn Header="Rank" Binding="{Binding Rank}"/>-->
                 <DataGridTemplateColumn Header="Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

@@ -6,6 +6,7 @@ namespace CCExchange.Services
     {
         public static IServiceCollection AddServices(this IServiceCollection services) => services
             .AddTransient<IApiService, ApiService>()
+            .AddTransient<IThemeService, ThemeService>()
             ;
     }
 }

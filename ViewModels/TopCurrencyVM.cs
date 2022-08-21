@@ -36,5 +36,14 @@ namespace CCExchange.ViewModels
             Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);     
         }
         private bool CanRefreshExecute(object o) => true;
+
+
+        private ICommand changeColor;
+        public ICommand ChangeColor => changeColor ??= new RelayCommand(OnChangeColorExecuted, CanChangeColorExecute);
+        private void OnChangeColorExecuted(object o)
+        {
+            App.Services.GetRequiredService<IThemeService>().ChangeTheme();
+        }
+        private bool CanChangeColorExecute(object o) => true;
     }
 }

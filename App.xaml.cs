@@ -31,9 +31,12 @@ namespace CCExchange
         protected override async void OnStartup(StartupEventArgs e)
         {
             var host = Host;
-
             base.OnStartup(e);
             await host.StartAsync();
+            using (var scope = Services.CreateScope())
+            {
+                scope.ServiceProvider.GetRequiredService<IThemeService>().InitTheme();
+            }
         }
 
         protected override async void OnExit(ExitEventArgs e)
@@ -42,5 +45,7 @@ namespace CCExchange
             base.OnExit(e);
             await host.StopAsync();
         }
+
+      
     }
 }
