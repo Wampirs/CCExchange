@@ -36,5 +36,6 @@ namespace CCExchange.ViewModels
             Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);     
         }
         private bool CanRefreshExecute(object o) => true;
+
     }
 }

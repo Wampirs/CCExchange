@@ -7,6 +7,13 @@ namespace CCExchange.ViewModels
 {
     public class MainWindowVM : ViewModel
     {
+        private string title = "CCurrency exchange";
+
+        public string WTitle
+        {
+            get { return title; }
+            set { Set(ref title, value); }
+        }
 
         private ViewModel curVm;
         public ViewModel CurrentVm

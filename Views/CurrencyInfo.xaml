@@ -9,9 +9,9 @@
     <Grid>
         <DockPanel>
             <StackPanel Orientation="Vertical" DockPanel.Dock="Top" DataContext="{Binding Currency}">
-                <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding Symbol}" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Center"/>
-                <TextBlock FontSize="16" >
+                <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock Text="{Binding Symbol}" FontSize="18" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock FontSize="16" Foreground="{DynamicResource Foreground}">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}Price: {0}$   {1}% at last 24Hr">
                             <Binding Path="PriceUsd"/>
@@ -19,9 +19,9 @@
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                <TextBlock Text="{Binding MarketCapUsd, StringFormat={}Market capitalization: {0}$}" FontSize="16" />
-                <TextBlock Text="{Binding VolumeUsd24Hr, StringFormat={}Volume for 24Hr: {0}$}" FontSize="16" />
-                <TextBlock FontSize="16">
+                <TextBlock Text="{Binding MarketCapUsd, StringFormat={}Market capitalization: {0}$}" FontSize="16" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock Text="{Binding VolumeUsd24Hr, StringFormat={}Volume for 24Hr: {0}$}" FontSize="16" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock FontSize="16" Foreground="{DynamicResource Foreground}">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}Supply: {0} of {1} {2}">
                             <Binding Path="Supply"/>
@@ -31,16 +31,46 @@
                     </TextBlock.Text>
                 </TextBlock>
             </StackPanel>
-            <TextBlock Text="Markets:" FontSize="16" DockPanel.Dock="Top"/>
+            <TextBlock Text="Markets:" FontSize="16" DockPanel.Dock="Top" Foreground="{DynamicResource Foreground}"/>
             <DataGrid ItemsSource="{Binding Markets}" 
-                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column"
-                      ColumnWidth="*" DockPanel.Dock="Top">
+                      CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True"
+                      ColumnWidth="*" GridLinesVisibility="Horizontal" MinRowHeight="30" 
+                      HorizontalGridLinesBrush="{DynamicResource DataGridHorisontalLine}" Background="Transparent" BorderBrush="{DynamicResource BorderBrush}"
+                      DockPanel.Dock="Top">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                        <Setter Property="Padding" Value="5 0 0 5"/>
+                        <Setter Property="FontSize" Value="15"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Exchange" Binding="{Binding ExchangeId}"/>
+                    <DataGridTextColumn Header="Exchange" Binding="{Binding ExchangeId}" Foreground="{DynamicResource Foreground}"/>
                     <DataGridTemplateColumn Header="Pair">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock>
+                                <TextBlock Foreground="{DynamicResource Foreground}">
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0}/{1}">
                                             <Binding Path="BaseSymbol"/>
@@ -51,9 +81,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd, StringFormat={}{0}$}"/>
-                    <DataGridTextColumn Header="Volume(24Hr)" Binding="{Binding VolumeUsd24Hr}"/>
-                    <DataGridTextColumn Header="Volume(%)" Binding="{Binding VolumePercent}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd, StringFormat={}{0}$}" Foreground="{DynamicResource Foreground}"/>
+                    <DataGridTextColumn Header="Volume(24Hr)" Binding="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
+                    <DataGridTextColumn Header="Volume(%)" Binding="{Binding VolumePercent}" Foreground="{DynamicResource Foreground}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
