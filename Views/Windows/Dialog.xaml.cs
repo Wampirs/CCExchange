@@ -15,22 +15,12 @@ namespace CCExchange.Views.Windows
         public Dialog()
         {
             InitializeComponent();
-            Closing += DialogWindow_Closing;
-        }
-
-        private void DialogWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Owner.Background = ownerBackground;
-            Owner.Opacity = 1;
         }
 
         private void Window_Initialized(object sender, EventArgs e)
         {
             var actWin = App.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
             Owner = actWin;
-            ownerBackground = (SolidColorBrush)Owner.Background;
-            Owner.Background = new SolidColorBrush(Colors.Gray);
-            Owner.Opacity = 0.5;
         }
 
         public void Close(bool res)
