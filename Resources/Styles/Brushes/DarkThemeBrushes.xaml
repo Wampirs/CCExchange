@@ -5,7 +5,7 @@
         <GradientStop Offset="0.0" Color="#1d1e1b"/>
         <GradientStop Offset="1.0" Color="#000100"/>
     </LinearGradientBrush>
-    <SolidColorBrush x:Key="MainBackground" Color="#0e110e"/>
+    <SolidColorBrush x:Key="MainBackground" Color="#1e1e1e"/>
     <SolidColorBrush x:Key="AlterBackground" Color="#1a1e1b"/>
     <SolidColorBrush x:Key="MainButtonBackground" Color="#bc82f7"/>
     <SolidColorBrush x:Key="MainButtonBackgroundDisabled" Color="#FF552586"/>
