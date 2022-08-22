@@ -12,7 +12,7 @@
         MaxWidth="600" MaxHeight="800" MinHeight="200" MinWidth="200"
         WindowStyle="None"
         Initialized="Window_Initialized">
-    <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="0.5">
+    <Border BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource MainBackground}" BorderThickness="0.5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
