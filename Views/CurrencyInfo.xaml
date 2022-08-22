@@ -66,8 +66,14 @@
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Exchange" Binding="{Binding ExchangeId}" Foreground="{DynamicResource Foreground}"/>
-                    <DataGridTemplateColumn Header="Pair">
+                    <DataGridTemplateColumn Header="Exchange" SortMemberPath="ExchangeId">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ExchangeId}" Foreground="{DynamicResource Foreground}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pair" SortMemberPath="BaseSymbol">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Foreground="{DynamicResource Foreground}">
@@ -81,9 +87,27 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd, StringFormat={}{0}$}" Foreground="{DynamicResource Foreground}"/>
-                    <DataGridTextColumn Header="Volume(24Hr)" Binding="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
-                    <DataGridTextColumn Header="Volume(%)" Binding="{Binding VolumePercent}" Foreground="{DynamicResource Foreground}"/>
+                    <DataGridTemplateColumn Header="Price" SortMemberPath="PriceUsd">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PriceUsd, StringFormat={}{0}$}" Foreground="{DynamicResource Foreground}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Volume(24Hr)" SortMemberPath="VolumeUsd24Hr">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Volume(%)" SortMemberPath="VolumePercent">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VolumePercent}" Foreground="{DynamicResource Foreground}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

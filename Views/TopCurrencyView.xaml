@@ -50,7 +50,7 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Name">
+                <DataGridTemplateColumn Header="Name" SortMemberPath="Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Foreground="{DynamicResource Foreground}">
@@ -64,12 +64,48 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd}" Foreground="{DynamicResource Foreground}"/>
-                <DataGridTextColumn Header="Market Cap" Binding="{Binding MarketCapUsd}" Foreground="{DynamicResource Foreground}"/>
-                <DataGridTextColumn Header="VWAP(24Hr)" Binding="{Binding Vwap24Hr}" Foreground="{DynamicResource Foreground}"/>
-                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}" Foreground="{DynamicResource Foreground}"/>
-                <DataGridTextColumn Header="Volume" Binding="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
-                <DataGridTextColumn Header="Change(24Hr)" Binding="{Binding ChangePercent24Hr}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTemplateColumn Header="Price" SortMemberPath="PriceUsd">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PriceUsd}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Market Cap" SortMemberPath="MarketCapUsd">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MarketCapUsd}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="VWAP(24Hr)" SortMemberPath="Vwap24Hr">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Vwap24Hr}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Supply" SortMemberPath="Supply">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Supply}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Volume" SortMemberPath="VolumeUsd24Hr">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Change(24Hr)" SortMemberPath="ChangePercent24Hr">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ChangePercent24Hr}" Foreground="{DynamicResource Foreground}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>        
     </Grid>

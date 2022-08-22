@@ -16,11 +16,6 @@
             <TextBox Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" Foreground="{DynamicResource Foreground}" Background="{DynamicResource MainBackground}"/>
             <ListBox ItemsSource="{Binding FilteredCurrencies}" SelectedItem="{Binding SelectedCurrency}"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{DynamicResource MainBackground}">
-                <ListBox.ItemContainerStyle TargetType="{x:Type ListBoxItem}">
-                    <Style TargetType="{x:Type ListBoxItem}">
-
-                    </Style>
-                </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
