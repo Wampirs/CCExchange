@@ -16,11 +16,11 @@
             <Button Margin="5" Height="auto" Width="auto" Command="{Binding RefreshCommand}" Content=" Refresh " Style="{StaticResource MainButton}" />
         </StackPanel>
         
-        <DataGrid ItemsSource="{Binding Curs}" Grid.Row="1"
+        <DataGrid x:Name="CurrenciesDG" ItemsSource="{Binding Curs}" Grid.Row="1"
                   CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True"
                   ColumnWidth="*" GridLinesVisibility="Horizontal" MinRowHeight="30" 
                   HorizontalGridLinesBrush="{DynamicResource DataGridHorisontalLine}" Background="Transparent" BorderBrush="{DynamicResource BorderBrush}" 
-                  VerticalAlignment="Top">
+                  VerticalAlignment="Top" MouseDoubleClick="DataGrid_MouseDoubleClick">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="BorderThickness" Value="0"/>

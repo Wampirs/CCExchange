@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CCExchange.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace CCExchange.Views
         public TopCurrencyView()
         {
             InitializeComponent();
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            (DataContext as TopCurrencyVM).ShowInfoDialogCommand.Execute(CurrenciesDG.CurrentItem);
         }
     }
 }
