@@ -59,7 +59,7 @@ namespace CCExchange.ViewModels
         public DetailInfoVM()
         {
             api = App.Services.GetRequiredService<IApiService>();
-            currencies = api.GetCurrenciesAsync().Result;
+            currencies = api.GetCurrenciesAsync();
             FilterChanged += OnFilterChanged;
             if (FilterChanged != null) FilterChanged();
         }
@@ -67,7 +67,7 @@ namespace CCExchange.ViewModels
         private void RefreshSelectedCurrency(ref Currency curr)
         {
             if (curr == null) return;
-            curr = api.GetCurrencyAsync(curr.Id).Result;
+            curr = api.GetCurrencyAsync(curr.Id);
         }
 
         private void OnFilterChanged()

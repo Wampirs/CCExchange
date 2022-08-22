@@ -26,14 +26,14 @@ namespace CCExchange.ViewModels
         public TopCurrencyVM()
         {
             api = App.Services.GetRequiredService<IApiService>();
-            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);
+            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10));
         }
 
         private ICommand refreshCommand;
         public ICommand RefreshCommand => refreshCommand ??= new RelayCommand(OnRefreshExecuted,CanRefreshExecute);
         private void OnRefreshExecuted(object o)
         {
-            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10).Result);     
+            Curs = new ObservableCollection<Currency>(api.GetCurrenciesAsync(10));     
         }
         private bool CanRefreshExecute(object o) => true;
 
