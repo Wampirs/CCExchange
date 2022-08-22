@@ -12,19 +12,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="TOP-10 CURRENCIES   " FontSize="18" FontWeight="Bold"/>
+            <TextBlock Text="TOP-10 CURRENCIES   " FontSize="18" FontWeight="Bold" Foreground="{DynamicResource Foreground}"/>
             <Button Margin="5" Height="auto" Width="auto" Command="{Binding RefreshCommand}" Content=" Refresh " Style="{StaticResource MainButton}" />
         </StackPanel>
         
         <DataGrid ItemsSource="{Binding Curs}" Grid.Row="1"
                   CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True"
                   ColumnWidth="*" GridLinesVisibility="Horizontal" MinRowHeight="30" 
-                  HorizontalGridLinesBrush="{DynamicResource DataGridHorisontalLine}" Background="Transparent" BorderBrush="Transparent" 
-                  VerticalAlignment="Center">
+                  HorizontalGridLinesBrush="{DynamicResource DataGridHorisontalLine}" Background="Transparent" BorderBrush="{DynamicResource BorderBrush}" 
+                  VerticalAlignment="Top">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="BorderThickness" Value="0"/>
-                    <Setter Property="Background" Value="#ffffff"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
                     <Setter Property="Padding" Value="5 0 0 5"/>
                     <Setter Property="FontSize" Value="15"/>
                     <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -36,18 +37,23 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type DataGridCell}">
                                 <Grid Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 </Grid>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock>
+                            <TextBlock Foreground="{DynamicResource Foreground}">
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0} ({1})">
                                         <Binding Path="Name"/>
@@ -58,12 +64,12 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd}"/>
-                <DataGridTextColumn Header="Market Cap" Binding="{Binding MarketCapUsd}"/>
-                <DataGridTextColumn Header="VWAP(24Hr)" Binding="{Binding Vwap24Hr}"/>
-                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}"/>
-                <DataGridTextColumn Header="Volume" Binding="{Binding VolumeUsd24Hr}"/>
-                <DataGridTextColumn Header="Change(24Hr)" Binding="{Binding ChangePercent24Hr}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding PriceUsd}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTextColumn Header="Market Cap" Binding="{Binding MarketCapUsd}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTextColumn Header="VWAP(24Hr)" Binding="{Binding Vwap24Hr}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTextColumn Header="Supply" Binding="{Binding Supply}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTextColumn Header="Volume" Binding="{Binding VolumeUsd24Hr}" Foreground="{DynamicResource Foreground}"/>
+                <DataGridTextColumn Header="Change(24Hr)" Binding="{Binding ChangePercent24Hr}" Foreground="{DynamicResource Foreground}"/>
             </DataGrid.Columns>
         </DataGrid>        
     </Grid>

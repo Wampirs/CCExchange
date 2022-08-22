@@ -13,13 +13,18 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel Grid.Column="0" Margin="5">
-            <TextBox Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top"/>
+            <TextBox Text="{Binding SearchCriteria, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" Foreground="{DynamicResource Foreground}" Background="{DynamicResource MainBackground}"/>
             <ListBox ItemsSource="{Binding FilteredCurrencies}" SelectedItem="{Binding SelectedCurrency}"
-                      ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="{DynamicResource MainBackground}">
+                <ListBox.ItemContainerStyle TargetType="{x:Type ListBoxItem}">
+                    <Style TargetType="{x:Type ListBoxItem}">
+
+                    </Style>
+                </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                        <TextBlock>
+                        <TextBlock Foreground="{DynamicResource Foreground}">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} ({1})">
                                     <Binding Path="Name"/>
@@ -27,7 +32,7 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                        <TextBlock Text="{Binding Rank,StringFormat={}Rank {0}}"/>
+                            <TextBlock Text="{Binding Rank,StringFormat={}Rank {0}}" Foreground="{DynamicResource Foreground}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
