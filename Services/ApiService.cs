@@ -87,6 +87,22 @@ namespace CCExchange.Services
             }
         }
 
+        public List<Exchange> GetExchanges()
+        {
+
+            string requestUri = new string($"v2/exchanges");
+            try
+            {
+                var rootJson = JsonConvert.DeserializeObject<JsonArray<Exchange>>(RequestApi(requestUri));
+                return rootJson.Data;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return new List<Exchange>();
+            }
+        }
+
         private string RequestApi(string requestString)
         {
             try
