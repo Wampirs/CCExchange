@@ -33,5 +33,25 @@ namespace CCExchange.Views.Windows
         {
             this.Close();
         }
+
+        private void TopBar_MinimizeButtonClicked(object sender, EventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void TopBar_MaximizeButtonClicked(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                return;
+            } 
+            this.WindowState=WindowState.Maximized;
+        }
+
+        private void TopBar_ThemeButtonClicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

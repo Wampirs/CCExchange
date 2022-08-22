@@ -12,7 +12,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="160"/>
             </Grid.ColumnDefinitions>
-            <ContentPresenter Content="{Binding TitleContent}"
+            <ContentPresenter Margin="10 0 0 0 " Content="{Binding TitleContent}"
                               VerticalAlignment="Center" Grid.Column="0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
                 <Button IsEnabled="{Binding ThemeButton}" Style="{StaticResource TopBarButton}" Height="20" Width="20" Margin="5" Click="ThemeButtonClick" >
