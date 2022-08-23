@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="MainBackground" Color="#ffffff"/>
     <SolidColorBrush x:Key="AlterBackground" Color="#eceff1"/>
     <SolidColorBrush x:Key="MainButtonBackground" Color="#18c683"/>
-    <SolidColorBrush x:Key="MainButtonBackgroundDisabled" Color="#77ebbe"/>
+    <SolidColorBrush x:Key="MainButtonBackgroundDisabled" Color="#FF12734D"/>
     <SolidColorBrush x:Key="MainButtonForeground" Color="#ffffff"/>
     <SolidColorBrush x:Key="DataGridHorisontalLine" Color="#e8e9e9"/>
     <SolidColorBrush x:Key="TopBarButtonFill" Color="#ffffff"/>

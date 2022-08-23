@@ -49,5 +49,17 @@ namespace CCExchange.ViewModels
         private bool CanShowDetailExetute(object o) => CurrentVm.GetType() != typeof(DetailInfoVM);
 
         #endregion
+
+        #region ShowExchangesCommand
+        private ICommand showExchangesCommand;
+        public ICommand ShowExchangesCommand => showExchangesCommand ??= new RelayCommand(OnShowExchangesExecuted, CanShowExchangesExetute);
+        private void OnShowExchangesExecuted(object o)
+        {
+            if (CurrentVm.GetType() == typeof(ExchangesVm)) return;
+            CurrentVm = new ExchangesVm();
+        }
+        private bool CanShowExchangesExetute(object o) => CurrentVm.GetType() != typeof(ExchangesVm);
+
+        #endregion
     }
 }

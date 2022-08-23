@@ -30,8 +30,8 @@ namespace CCExchange.ViewModels
 		public CurrencyInfoVM(Currency curr)
 		{
 			api = App.Services.GetRequiredService<IApiService>();
-			Currency = api.GetCurrencyAsync(curr.Id);
-			Markets = api.GetMarketsAsync(curr.Id);
+			Currency = api.GetCurrencyById(curr.Id);
+			Markets = api.GetMarketsByID(curr.Id);
 		}
 
 	}

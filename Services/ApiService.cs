@@ -25,7 +25,7 @@ namespace CCExchange.Services
         }
 
 
-        public List<Currency> GetCurrenciesAsync(int count = -1)
+        public List<Currency> GetCurrencies(int count = -1)
         {
             string requestUri = new string("v2/assets");
             if (count > 0) requestUri = requestUri + $"?limit={count}";
@@ -42,7 +42,7 @@ namespace CCExchange.Services
             
         }
 
-        public Currency GetCurrencyAsync(string id)
+        public Currency GetCurrencyById(string id)
         {
             string requestUri = new string($"v2/assets/{id}");
             try
@@ -57,7 +57,7 @@ namespace CCExchange.Services
             }
         }
 
-        public List<Market> GetMarketsAsync(string curId)
+        public List<Market> GetMarketsByID(string curId)
         {
             string requestUri = new string($"v2/assets/{curId}/markets");
             try
@@ -114,7 +114,7 @@ namespace CCExchange.Services
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
                 return string.Empty;
             }
         }

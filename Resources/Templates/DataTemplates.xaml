@@ -15,4 +15,12 @@
         <view:CurrencyInfo DataContext="{Binding}"/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:ExchangesVm}">
+        <view:ExchangesView DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ExchangeInfoVM}">
+        <view:ExchangeInfo DataContext="{Binding}"/>
+    </DataTemplate>
+
 </ResourceDictionary>
