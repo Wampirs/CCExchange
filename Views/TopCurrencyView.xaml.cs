@@ -16,8 +16,8 @@ namespace CCExchange.Views
 
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (CurrenciesDG.CurrentItem == null) return;
-            (DataContext as TopCurrencyVM).ShowInfoDialogCommand.Execute(CurrenciesDG.CurrentItem);
+            if (DataContext is TopCurrencyVM ctx && DataContext!=null && CurrenciesDG.CurrentItem != null)
+            ctx.ShowInfoDialogCommand.Execute(CurrenciesDG.CurrentItem);
         }
     }
 }
