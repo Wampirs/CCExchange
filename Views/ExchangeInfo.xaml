@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="CCExchange.Views.ExchangeInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CCExchange.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" DataContext="{Binding Exchange}">
+                <TextBlock Text="{Binding Name}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock FontSize="16" Foreground="{DynamicResource Foreground}">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}Volume: {0} ({1}% of total volume)">
+                            <Binding Path="VolumeUsd" />
+                            <Binding Path="PercentTotalVolume"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Text="{Binding TradingPairs, StringFormat={}Number of trading pairs: {0}}" FontSize="16" Foreground="{DynamicResource Foreground}"/>
+                <TextBlock Text="{Binding Socket, StringFormat={}Allow sockets {0},TargetNullValue=Allow sockets: False}" FontSize="16" Foreground="{DynamicResource Foreground}"/>
+        </StackPanel>
+        <Button Margin="5" VerticalAlignment="Top" MinHeight="30" Content=" Open exchange site " Command="{Binding OpenSiteCommand}" Style="{StaticResource MainButton}" Cursor="Hand"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
