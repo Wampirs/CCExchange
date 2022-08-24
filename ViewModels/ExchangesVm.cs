@@ -7,33 +7,33 @@ using System.Linq;
 
 namespace CCExchange.ViewModels
 {
-    public class DetailInfoVM : ViewModel
+    public class ExchangesVm : ViewModel
     {
         private IApiService api;
-        private List<Currency> currencies;
-        private List<Currency> filteredCurrencies;
-        public List<Currency> FilteredCurrencies
+        private List<Exchange> exchanges;
+        private List<Exchange> filteredExchanges;
+        public List<Exchange> FilteredExchanges
         {
-            get => filteredCurrencies;
+            get => filteredExchanges;
             set
             {
-                Set(ref filteredCurrencies, value);
-                SelectedCurrency = filteredCurrencies.FirstOrDefault();
+                Set(ref filteredExchanges, value);
+                SelectedExchange = filteredExchanges.FirstOrDefault();
             }
         }
-        private Currency selectedCurrency;
-        public Currency SelectedCurrency
+        private Exchange selectedExchange;
+        public Exchange SelectedExchange
         {
-            get => selectedCurrency;
+            get => selectedExchange;
             set
             {
-                Set(ref selectedCurrency, value);
+                Set(ref selectedExchange, value);
                 if (value == null)
                 {
                     InfoVM = null;
                     return;
                 }
-                InfoVM = new CurrencyInfoVM(value);
+                InfoVM = new ExchangeInfoVM(value);
             }
         }
         private string searchCriteria = string.Empty;
@@ -46,9 +46,9 @@ namespace CCExchange.ViewModels
                 if (FilterChanged != null) FilterChanged();
             }
         }
-        private CurrencyInfoVM infoVM;
+        private ExchangeInfoVM infoVM;
 
-        public CurrencyInfoVM InfoVM
+        public ExchangeInfoVM InfoVM
         {
             get { return infoVM; }
             set { Set(ref infoVM, value); }
@@ -56,28 +56,28 @@ namespace CCExchange.ViewModels
 
 
 
-        public DetailInfoVM()
+        public ExchangesVm()
         {
             api = App.Services.GetRequiredService<IApiService>();
-            currencies = api.GetCurrencies();
+            exchanges = api.GetExchanges();
             FilterChanged += OnFilterChanged;
             if (FilterChanged != null) FilterChanged();
         }
 
-        private void RefreshSelectedCurrency(ref Currency curr)
+        private void RefreshSelectedCurrency(ref Exchange curr)
         {
             if (curr == null) return;
-            curr = api.GetCurrencyById(curr.Id);
+            curr = api.GetExchangeById(curr.ExchangeId);
         }
 
         private void OnFilterChanged()
         {
             if (SearchCriteria == string.Empty)
             {
-                FilteredCurrencies = currencies;
+                FilteredExchanges = exchanges;
                 return;
             }
-            FilteredCurrencies = currencies.Where(x => x.Name.ToLower().Contains(SearchCriteria.ToLower()) || x.Symbol.ToLower().Contains(SearchCriteria.ToLower())).ToList();
+            FilteredExchanges = exchanges.Where(x => x.Name.ToLower().Contains(SearchCriteria.ToLower())).ToList();
         }
 
         private delegate void FilterChangedHandler();
