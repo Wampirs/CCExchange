@@ -32,11 +32,11 @@
                 </TextBlock>
             </StackPanel>
             <TextBlock Text="Markets:" FontSize="16" DockPanel.Dock="Top" Foreground="{DynamicResource Foreground}"/>
-            <DataGrid ItemsSource="{Binding Markets}" 
+            <DataGrid ItemsSource="{Binding Markets}" x:Name="MarketsDG" 
                       CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True"
                       ColumnWidth="*" GridLinesVisibility="Horizontal" MinRowHeight="30" 
                       HorizontalGridLinesBrush="{DynamicResource DataGridHorisontalLine}" Background="Transparent" BorderBrush="{DynamicResource BorderBrush}"
-                      DockPanel.Dock="Top">
+                      DockPanel.Dock="Top" MouseDoubleClick="DataGrid_MouseDoubleClick">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="BorderThickness" Value="0"/>

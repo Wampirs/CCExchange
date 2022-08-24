@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CCExchange.Models;
+using CCExchange.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,12 @@ namespace CCExchange.Views
         public CurrencyInfo()
         {
             InitializeComponent();
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (MarketsDG.CurrentItem == null) return;
+            (DataContext as CurrencyInfoVM).ShowInfoDialogCommand.Execute((MarketsDG.CurrentItem as Market).ExchangeId);
         }
     }
 }
