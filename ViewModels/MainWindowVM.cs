@@ -1,5 +1,4 @@
 ﻿using CCExchange.Commands;
-using CCExchange.Services;
 using CCExchange.ViewModels.Base;
 using System.Windows.Input;
 
@@ -8,7 +7,6 @@ namespace CCExchange.ViewModels
     public class MainWindowVM : ViewModel
     {
         private string title = "CCurrency exchange";
-
         public string WTitle
         {
             get { return title; }
@@ -38,6 +36,7 @@ namespace CCExchange.ViewModels
         private bool CanShowTopExetute(object o) => CurrentVm.GetType() != typeof(TopCurrencyVM);
 
         #endregion
+
         #region ShowDetailCommand
         private ICommand showdetailCommand;
         public ICommand ShowDetailCommand => showdetailCommand ??= new RelayCommand(OnShowDetailExecuted, CanShowDetailExetute);

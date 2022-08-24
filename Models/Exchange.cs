@@ -7,6 +7,7 @@ namespace CCExchange.Models
 {
     public class Exchange : Model
     {
+        #region Private fields
         private string exchangeId;
         private string? name;
         private string? rank;
@@ -16,6 +17,7 @@ namespace CCExchange.Models
         private bool? socket;
         private string? exchangeUrl;
         private long? updated;
+        #endregion
 
         [JsonPropertyName("exchangeId")]
         public string ExchangeId { get => exchangeId; set => exchangeId = value; }

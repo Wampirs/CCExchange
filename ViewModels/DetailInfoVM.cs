@@ -10,7 +10,9 @@ namespace CCExchange.ViewModels
     public class DetailInfoVM : ViewModel
     {
         private IApiService api;
+
         private List<Currency> currencies;
+
         private List<Currency> filteredCurrencies;
         public List<Currency> FilteredCurrencies
         {
@@ -21,6 +23,7 @@ namespace CCExchange.ViewModels
                 SelectedCurrency = filteredCurrencies.FirstOrDefault();
             }
         }
+
         private Currency selectedCurrency;
         public Currency SelectedCurrency
         {
@@ -36,6 +39,7 @@ namespace CCExchange.ViewModels
                 InfoVM = new CurrencyInfoVM(value);
             }
         }
+
         private string searchCriteria = string.Empty;
         public string SearchCriteria
         {
@@ -46,15 +50,13 @@ namespace CCExchange.ViewModels
                 if (FilterChanged != null) FilterChanged();
             }
         }
-        private CurrencyInfoVM infoVM;
 
+        private CurrencyInfoVM infoVM;
         public CurrencyInfoVM InfoVM
         {
             get { return infoVM; }
             set { Set(ref infoVM, value); }
         }
-
-
 
         public DetailInfoVM()
         {
@@ -62,12 +64,6 @@ namespace CCExchange.ViewModels
             currencies = api.GetCurrencies();
             FilterChanged += OnFilterChanged;
             if (FilterChanged != null) FilterChanged();
-        }
-
-        private void RefreshSelectedCurrency(ref Currency curr)
-        {
-            if (curr == null) return;
-            curr = api.GetCurrencyById(curr.Id);
         }
 
         private void OnFilterChanged()

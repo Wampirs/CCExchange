@@ -1,7 +1,9 @@
-﻿namespace CCExchange.Services
+﻿using CCExchange.ViewModels.Base;
+
+namespace CCExchange.Services
 {
     public interface IDialogService
     {
-        bool? ShowDialog(object vm);
+        bool? ShowDialog(ViewModel vm);
     }
 }

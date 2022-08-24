@@ -9,7 +9,7 @@ namespace CCExchange.Models
         public long Timestamp { get; set; }
     }
 
-    public class JsonObject<T> where T :  Model, new()
+    public class JsonObject<T> where T : Model, new()
     {
         public T Data { get; set; }
         public long Timestamp { get; set; }

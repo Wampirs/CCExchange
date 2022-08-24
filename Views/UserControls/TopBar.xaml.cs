@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CCExchange.Views.UserControls
 {
@@ -26,8 +15,6 @@ namespace CCExchange.Views.UserControls
             DataContext = this;
         }
 
-        
-
         public object TitleContent
         {
             get { return (object)GetValue(ContentProperty); }
@@ -36,7 +23,7 @@ namespace CCExchange.Views.UserControls
 
         // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentProperty =
-            DependencyProperty.Register("Content", typeof(object), typeof(TopBar), new PropertyMetadata { DefaultValue = string.Empty});
+            DependencyProperty.Register("Content", typeof(object), typeof(TopBar), new PropertyMetadata { DefaultValue = string.Empty });
 
 
         public bool CloseButton
@@ -47,7 +34,7 @@ namespace CCExchange.Views.UserControls
 
         // Using a DependencyProperty as the backing store for CloseButton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CloseButtonProperty =
-            DependencyProperty.Register("CloseButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue= true});
+            DependencyProperty.Register("CloseButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue = true });
 
 
 
@@ -59,8 +46,7 @@ namespace CCExchange.Views.UserControls
 
         // Using a DependencyProperty as the backing store for MaximazeButton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaximazeButtonProperty =
-            DependencyProperty.Register("MaximazeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue=false});
-
+            DependencyProperty.Register("MaximazeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue = false });
 
 
         public bool MinimizeButton
@@ -71,7 +57,7 @@ namespace CCExchange.Views.UserControls
 
         // Using a DependencyProperty as the backing store for MinimizeButton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MinimizeButtonProperty =
-            DependencyProperty.Register("MinimizeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue= false});
+            DependencyProperty.Register("MinimizeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue = false });
 
 
 
@@ -83,7 +69,7 @@ namespace CCExchange.Views.UserControls
 
         // Using a DependencyProperty as the backing store for ThemeButton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThemeButtonProperty =
-            DependencyProperty.Register("ThemeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue=false});
+            DependencyProperty.Register("ThemeButton", typeof(bool), typeof(TopBar), new PropertyMetadata { DefaultValue = false });
 
         public event EventHandler CloseButtonClicked;
 

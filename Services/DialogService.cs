@@ -1,10 +1,11 @@
-﻿using CCExchange.Views.Windows;
+﻿using CCExchange.ViewModels.Base;
+using CCExchange.Views.Windows;
 
 namespace CCExchange.Services
 {
     public class DialogService : IDialogService
     {
-        public bool? ShowDialog(object vm)
+        public bool? ShowDialog(ViewModel vm)
         {
             Dialog win = new Dialog();
             win.DataContext = vm;

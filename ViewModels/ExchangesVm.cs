@@ -10,7 +10,9 @@ namespace CCExchange.ViewModels
     public class ExchangesVm : ViewModel
     {
         private IApiService api;
+
         private List<Exchange> exchanges;
+
         private List<Exchange> filteredExchanges;
         public List<Exchange> FilteredExchanges
         {
@@ -21,6 +23,7 @@ namespace CCExchange.ViewModels
                 SelectedExchange = filteredExchanges.FirstOrDefault();
             }
         }
+
         private Exchange selectedExchange;
         public Exchange SelectedExchange
         {
@@ -36,6 +39,7 @@ namespace CCExchange.ViewModels
                 InfoVM = new ExchangeInfoVM(value);
             }
         }
+
         private string searchCriteria = string.Empty;
         public string SearchCriteria
         {
@@ -46,15 +50,14 @@ namespace CCExchange.ViewModels
                 if (FilterChanged != null) FilterChanged();
             }
         }
-        private ExchangeInfoVM infoVM;
 
+
+        private ExchangeInfoVM infoVM;
         public ExchangeInfoVM InfoVM
         {
             get { return infoVM; }
             set { Set(ref infoVM, value); }
         }
-
-
 
         public ExchangesVm()
         {
@@ -62,12 +65,6 @@ namespace CCExchange.ViewModels
             exchanges = api.GetExchanges();
             FilterChanged += OnFilterChanged;
             if (FilterChanged != null) FilterChanged();
-        }
-
-        private void RefreshSelectedCurrency(ref Exchange curr)
-        {
-            if (curr == null) return;
-            curr = api.GetExchangeById(curr.ExchangeId);
         }
 
         private void OnFilterChanged()

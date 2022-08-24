@@ -12,7 +12,6 @@
     <None Remove="Resources\Images\Close.png" />
     <None Remove="Resources\Images\Maximize.png" />
     <None Remove="Resources\Images\Minimize.png" />
-    <None Remove="Resources\Images\Moon.png" />
     <None Remove="Resources\Images\Sun.png" />
   </ItemGroup>
 
@@ -27,7 +26,6 @@
     </Resource>
     <Resource Include="Resources\Images\Maximize.png" />
     <Resource Include="Resources\Images\Minimize.png" />
-    <Resource Include="Resources\Images\Moon.png" />
     <Resource Include="Resources\Images\Sun.png" />
   </ItemGroup>
 

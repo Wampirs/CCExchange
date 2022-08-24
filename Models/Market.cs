@@ -1,12 +1,13 @@
-﻿using Newtonsoft.Json;
-using System.Globalization;
+﻿using CCExchange.Models.Base;
+using Newtonsoft.Json;
 using System;
-using CCExchange.Models.Base;
+using System.Globalization;
 
 namespace CCExchange.Models
 {
     public class Market : Model
     {
+        #region Private fields
         private string? priceUsd;
         private string? exchangeId;
         private string? baseId;
@@ -15,6 +16,7 @@ namespace CCExchange.Models
         private string? quoteSymbol;
         private string? volumeUsd24Hr;
         private string? volumePercent;
+        #endregion
 
         [JsonProperty("exchangeId")]
         public string? ExchangeId { get => exchangeId; set => exchangeId = value; }
@@ -37,7 +39,7 @@ namespace CCExchange.Models
             get => volumeUsd24Hr;
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     volumeUsd24Hr = "0";
                 }
@@ -61,7 +63,8 @@ namespace CCExchange.Models
         }
 
         [JsonProperty("volumePercent")]
-        public string? VolumePercent {
+        public string? VolumePercent
+        {
             get => volumePercent;
             set
             {

@@ -8,8 +8,8 @@ using System.Windows.Input;
 
 namespace CCExchange.ViewModels
 {
-    public class CurrencyInfoVM : ViewModel
-    {
+	public class CurrencyInfoVM : ViewModel
+	{
 		private readonly IApiService api;
 		private readonly IDialogService dialog;
 
@@ -17,11 +17,10 @@ namespace CCExchange.ViewModels
 		public Currency Currency
 		{
 			get { return currency; }
-			set { Set(ref currency,value); }
+			set { Set(ref currency, value); }
 		}
 
 		private List<Market> markets;
-
 		public List<Market> Markets
 		{
 			get { return markets; }
@@ -36,13 +35,14 @@ namespace CCExchange.ViewModels
 			Markets = api.GetMarketsByID(curr.Id);
 		}
 
-        private ICommand showInfoDialog;
-        public ICommand ShowInfoDialogCommand => showInfoDialog ??= new RelayCommand(OnshowInfoDialogExecuted, CanshowInfoDialogExecute);
-        private void OnshowInfoDialogExecuted(object o)
-        {
-            dialog.ShowDialog(new ExchangeInfoVM(api.GetExchangeById(o as string)));
-        }
-        private bool CanshowInfoDialogExecute(object o) => true;
-
-    }
+		#region Show info command
+		private ICommand showInfoDialog;
+		public ICommand ShowInfoDialogCommand => showInfoDialog ??= new RelayCommand(OnshowInfoDialogExecuted, CanshowInfoDialogExecute);
+		private void OnshowInfoDialogExecuted(object o)
+		{
+			dialog.ShowDialog(new ExchangeInfoVM(api.GetExchangeById(o as string)));
+		}
+		private bool CanshowInfoDialogExecute(object o) => true; 
+		#endregion
+	}
 }

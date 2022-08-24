@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace CCExchange.Services
@@ -14,16 +13,13 @@ namespace CCExchange.Services
         HttpClient api;
         const string apiAddress = "https://api.coincap.io";
 
-
         public ApiService()
         {
             api = new HttpClient();
             api.BaseAddress = new Uri(apiAddress);
-            api.DefaultRequestHeaders.Add("User-Agent", "C# console program");
-            api.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
+            api.DefaultRequestHeaders.Add("User-Agent", "Wpf program");
+            api.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
 
         public List<Currency> GetCurrencies(int count = -1)
         {
@@ -34,12 +30,11 @@ namespace CCExchange.Services
                 var rootJson = JsonConvert.DeserializeObject<JsonArray<Currency>>(RequestApi(requestUri));
                 return rootJson.Data;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return new List<Currency>();
             }
-            
         }
 
         public Currency GetCurrencyById(string id)
@@ -69,10 +64,10 @@ namespace CCExchange.Services
             {
                 MessageBox.Show(ex.Message);
                 return new List<Market>();
-            }            
+            }
         }
 
-        public Exchange GetExchangeById (string exId)
+        public Exchange GetExchangeById(string exId)
         {
             string requestUri = new string($"v2/exchanges/{exId}");
             try
@@ -89,7 +84,6 @@ namespace CCExchange.Services
 
         public List<Exchange> GetExchanges()
         {
-
             string requestUri = new string($"v2/exchanges");
             try
             {

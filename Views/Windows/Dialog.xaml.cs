@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace CCExchange.Views.Windows
 {
@@ -11,7 +10,6 @@ namespace CCExchange.Views.Windows
     /// </summary>
     public partial class Dialog : Window
     {
-        SolidColorBrush ownerBackground;
         public Dialog()
         {
             InitializeComponent();

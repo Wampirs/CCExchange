@@ -6,8 +6,5 @@ namespace CCExchange.ViewModels.Base
     {
         MainWindowVM mainWindowVM;
         public MainWindowVM MainWindowVM => mainWindowVM ??= App.Services.GetRequiredService<MainWindowVM>();
-
-
-
     }
 }

@@ -14,16 +14,15 @@ namespace CCExchange
     {
         private static IHost _host;
         public static IHost Host => _host ??= CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
-        public static IServiceProvider Services => Host.Services;
 
+        public static IServiceProvider Services => Host.Services;
 
         public static IHostBuilder CreateHostBuilder(string[] args) => Microsoft.Extensions.Hosting.Host
             .CreateDefaultBuilder(args)
             .ConfigureServices(ConfigureServices)
         ;
 
-
-        internal static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+        public static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
             .AddViewModels()
             .AddServices()
         ;
@@ -45,7 +44,5 @@ namespace CCExchange
             base.OnExit(e);
             await host.StopAsync();
         }
-
-      
     }
 }
